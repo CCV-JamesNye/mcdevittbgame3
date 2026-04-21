@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://cithh10v4hpcv"]
+
+[ext_resource type="Texture2D" uid="uid://chil08u31bt7c" path="res://Art/Sprites/16x32/16x32 All Animations.png" id="1_613su"]
+[ext_resource type="Script" uid="uid://cgk4ru6hs6kkj" path="res://Scenes/Enemies/scripts/enemy.gd" id="1_jcvw6"]
+[ext_resource type="Script" uid="uid://cnafnwhjmhu1i" path="res://Scenes/Scripts/hitbox.gd" id="3_x1rqp"]
+
+[sub_resource type="Animation" id="Animation_bbdfx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nnp3v"]
+resource_name = "crouch"
+length = 0.1
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [75]
+}
+
+[sub_resource type="Animation" id="Animation_dxkr7"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_3865w"]
+resource_name = "jump"
+length = 0.3
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [75, 76]
+}
+
+[sub_resource type="Animation" id="Animation_qvhrc"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 26, 25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7udvr"]
+_data = {
+&"RESET": SubResource("Animation_bbdfx"),
+&"crouch": SubResource("Animation_nnp3v"),
+&"idle": SubResource("Animation_dxkr7"),
+&"jump": SubResource("Animation_3865w"),
+&"walk": SubResource("Animation_qvhrc")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnp3v"]
+size = Vector2(11.999994, 26)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcvw6"]
+radius = 288.00174
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubio8"]
+size = Vector2(10, 21)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1317683084]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+script = ExtResource("1_jcvw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=768496133]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_613su")
+hframes = 10
+vframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1036363939]
+libraries/ = SubResource("AnimationLibrary_7udvr")
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=2010639320]
+position = Vector2(6, 16)
+target_position = Vector2(0, 5)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1359057249]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_nnp3v")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1543423643]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1638199236]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_jcvw6")
+
+[node name="ChaseTimer" type="Timer" parent="." unique_id=1576728133]
+wait_time = 2.0
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="." unique_id=230437428]
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1620106820]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_x1rqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=714549606]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_ubio8")

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://brp064weagc1x"]
+
+[ext_resource type="Script" uid="uid://dvlbgcsvuflh4" path="res://Scenes/Scripts/back_to_menu.gd" id="1_iq4pc"]
+
+[node name="Too Slow" type="CanvasLayer" unique_id=1801809518]
+script = ExtResource("1_iq4pc")
+
+[node name="Control" type="Control" parent="." unique_id=241310065]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1916907239]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 0.50980395)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1766770465]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=360783852]
+layout_mode = 2
+
+[node name="game over" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=1086762304]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "TOO SLOW!"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=982511343]
+layout_mode = 2
+size_flags_vertical = 6
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="menubutton" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=1042771289]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Main Menu"

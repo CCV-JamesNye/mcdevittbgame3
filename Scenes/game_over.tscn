@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://xb2i48owc6or"]
+
+[ext_resource type="Script" uid="uid://dvlbgcsvuflh4" path="res://Scenes/Scripts/back_to_menu.gd" id="1_ojehl"]
+
+[node name="game over" type="CanvasLayer" unique_id=553463786]
+process_mode = 3
+script = ExtResource("1_ojehl")
+
+[node name="Control" type="Control" parent="." unique_id=3470391]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1240719152]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 0.50980395)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=381471711]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1090144060]
+layout_mode = 2
+
+[node name="game over" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=1013495290]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "YOU DIED!"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=1510865453]
+layout_mode = 2
+size_flags_vertical = 6
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="menubutton" type="Button" parent="Control/MarginContainer/VBoxContainer" unique_id=1720698815]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Main Menu"

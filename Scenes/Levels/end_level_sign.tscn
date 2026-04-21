@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dnapr3en3svtu"]
+
+[ext_resource type="Script" uid="uid://7cwfcovirry6" path="res://Scenes/Scripts/finish.gd" id="1_x8h4m"]
+[ext_resource type="Texture2D" uid="uid://dhjmyt76i5d38" path="res://Scenes/Tilesets/staticObjects_.png" id="2_x8h4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p322c"]
+size = Vector2(20, 190.66667)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8r3r"]
+atlas = ExtResource("2_x8h4m")
+region = Rect2(34, 100, 13, 12)
+
+[node name="EndLevelSign" type="Area2D" unique_id=1104942207]
+position = Vector2(-1.9073486e-06, 0)
+scale = Vector2(1.5, 1.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_x8h4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1646850535]
+position = Vector2(445, 103.333336)
+shape = SubResource("RectangleShape2D_p322c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=468504045]
+position = Vector2(441, 106)
+texture = SubResource("AtlasTexture_v8r3r")

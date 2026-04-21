@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://8ab4s6xtwl2q"]
+
+[ext_resource type="Texture2D" uid="uid://b7x6ybowcinar" path="res://Scenes/Tilesets/beehives_.png" id="1_vb1rx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1aaj4"]
+texture = ExtResource("1_vb1rx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tl7g7"]
+sources/0 = SubResource("TileSetAtlasSource_1aaj4")
+
+[node name="Beehives" type="TileMapLayer" unique_id=870759723]
+tile_set = SubResource("TileSet_tl7g7")
