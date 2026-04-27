@@ -22,6 +22,7 @@ var max_charge_time : float = 0.4
 var crouch_time := 0.12
 var health : int = 2
 var max_health : int = 2
+var can_move : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,6 +46,15 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
+		
+	# If the player should be paused, stop movement and force idle
+	if !can_move:
+		velocity.x = 0
+		is_charging_jump = false
+		effect_player.stop()
+		animation_player.play("idle")
+		move_and_slide()
+		return
 	
 	# Physics 
 	# build the jump
