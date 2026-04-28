@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bt3gr4dodewfr" path="res://Scenes/UI/mainmenu.gd" id="1_5c06j"]
 [ext_resource type="PackedScene" uid="uid://c4ab2uvn1bys" path="res://Scenes/Tilesets/worldtiles.tscn" id="2_6olnl"]
+[ext_resource type="AudioStream" uid="uid://dfl4dw2uxecq" path="res://Audio/music/menu music.ogg" id="3_keiq2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_keiq2"]
 
@@ -147,3 +148,8 @@ offset_bottom = 195.0
 scale = Vector2(0.5, 0.5)
 button_pressed = true
 text = "Enable SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1854596505]
+stream = ExtResource("3_keiq2")
+autoplay = true
+bus = &"Music"

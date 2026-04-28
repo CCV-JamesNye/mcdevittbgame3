@@ -7,28 +7,16 @@
 [ext_resource type="Script" uid="uid://dv8cv3bwqbxdd" path="res://Scenes/Scripts/HurtBox.gd" id="3_xpcdj"]
 [ext_resource type="AudioStream" uid="uid://dh5y0r7qc2fs3" path="res://Audio/sounds/jump.ogg" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://tlv40eq6ifbw" path="res://Scenes/Player/overlay.gd" id="7_0u5uq"]
+[ext_resource type="AudioStream" uid="uid://u3v20p8w3hvf" path="res://Audio/sounds/fail.ogg" id="8_jlvik"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpcdj"]
-bg_color = Color(0.8081649, 0.090980284, 0.24820995, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlvik"]
+bg_color = Color(0.64695776, 0.57893276, 0.5700597, 1)
 border_color = Color(0, 0, 0, 1)
+border_blend = true
+shadow_size = 1
 
-[sub_resource type="GDScript" id="GDScript_xpcdj"]
-script/source = "extends ProgressBar
-@onready var player: Player = $\"..\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	player.health_update.connect ( _update_bar )
-	pass # Replace with function body.
-	
-func _update_bar ( health: int ) -> void:
-	value = health
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gk6dx"]
+bg_color = Color(0.15039194, 0.36053628, 0.12627333, 1)
 
 [sub_resource type="Animation" id="Animation_bbdfx"]
 length = 0.001
@@ -217,27 +205,22 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 2
 script = ExtResource("1_a3d8c")
 
+[node name="JumpMeter" type="ProgressBar" parent="." unique_id=1053367249]
+offset_left = 162.0
+offset_top = 68.0
+offset_right = 166.0
+offset_bottom = 95.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jlvik")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gk6dx")
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=652061828]
 position = Vector2(176, 78)
 texture = ExtResource("2_xpcdj")
 hframes = 10
 vframes = 10
-
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=616191593]
-anchors_preset = -1
-anchor_left = 0.55
-anchor_top = 0.5
-anchor_right = 0.55
-anchor_bottom = 0.5
-offset_left = 168.0
-offset_top = 64.0
-offset_right = 183.0
-offset_bottom = 68.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_xpcdj")
-max_value = 2.0
-value = 2.0
-show_percentage = false
-script = SubResource("GDScript_xpcdj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1159049076]
 libraries/ = SubResource("AnimationLibrary_7udvr")
@@ -286,3 +269,6 @@ color = Color(0.8627451, 0.24313726, 0.16470589, 0.47058824)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1508828645]
 position = Vector2(176, 84)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1978229756]
+stream = ExtResource("8_jlvik")

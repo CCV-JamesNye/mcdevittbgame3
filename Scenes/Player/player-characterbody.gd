@@ -13,12 +13,13 @@ var speed : float = 100
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 @onready var charge_jump_sound: AudioStreamPlayer2D = $ChargeJumpSound
 @onready var overlay: CanvasLayer = $Overlay
-
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
+@onready var jump_meter: ProgressBar = $JumpMeter
 
 
 var is_charging_jump : bool = false 
 var charge_time : float = 0.0
-var max_charge_time : float = 0.4
+var max_charge_time : float = .5
 var crouch_time := 0.12
 var health : int = 2
 var max_health : int = 2
@@ -27,6 +28,10 @@ var can_move : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hurtbox.take_damage.connect ( _take_damage )
+	jump_meter.min_value = 0
+	jump_meter.max_value = 100
+	jump_meter.value = 0
+	jump_meter.visible = false
 	pass
 
 func _take_damage ( damage: int) -> void:
@@ -49,7 +54,7 @@ func _physics_process(delta: float) -> void:
 		
 	# If the player should be paused, stop movement and force idle
 	if !can_move:
-		velocity.x = 0
+		velocity = Vector2.ZERO
 		is_charging_jump = false
 		effect_player.stop()
 		animation_player.play("idle")
@@ -63,6 +68,8 @@ func _physics_process(delta: float) -> void:
 	if is_charging_jump:
 		charge_time += delta
 		charge_time = min(charge_time, max_charge_time)
+		jump_meter.visible = true
+		jump_meter.value = (charge_time / max_charge_time) * 100
 		# after a brief crouch, show charge_up while holding
 		if charge_time >= crouch_time and effect_player.current_animation != "charge_up":
 			effect_player.play("charge_up")
@@ -94,6 +101,9 @@ func _physics_process(delta: float) -> void:
 
 	
 func _unhandled_input(event: InputEvent) -> void:
+	if !can_move:
+		return
+	
 	# input
 # If the jump is pressed
 # check to see when jump is released
@@ -110,9 +120,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("jump") and is_charging_jump:
 		# release jump
 		var charge_ratio = charge_time / max_charge_time
-		charge_ratio = 0.5 if charge_ratio < 0.5 else charge_ratio
+		charge_ratio = clamp(charge_ratio, 0.1, 1.0)
 		velocity.y = jump_force * charge_ratio
 		is_charging_jump = false
+		jump_meter.visible = false
+		jump_meter.value = 0
 		effect_player.stop()
 		animation_player.play("jump")
 		jump_sound.play()
@@ -120,5 +132,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		
 func die () -> void:
+	can_move = false
+	velocity = Vector2.ZERO
+	death_sound.play()
+	await death_sound.finished
 	await SceneTransition.load_scene("res://Scenes/game_over.tscn")
 	

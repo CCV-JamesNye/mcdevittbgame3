@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xb2i48owc6or"]
 
 [ext_resource type="Script" uid="uid://dvlbgcsvuflh4" path="res://Scenes/Scripts/back_to_menu.gd" id="1_ojehl"]
+[ext_resource type="AudioStream" uid="uid://bvybo0co3sv8c" path="res://Audio/music/sadmusic.ogg" id="2_8fo1c"]
 
 [node name="game over" type="CanvasLayer" unique_id=553463786]
 process_mode = 3
@@ -55,3 +56,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1956564758]
+stream = ExtResource("2_8fo1c")
+autoplay = true
+bus = &"Music"

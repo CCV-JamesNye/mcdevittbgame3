@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://mvq11dodyiiq"]
 
 [ext_resource type="Script" uid="uid://dvlbgcsvuflh4" path="res://Scenes/Scripts/back_to_menu.gd" id="1_oq8vb"]
+[ext_resource type="AudioStream" uid="uid://bguh1cyyf3vof" path="res://Audio/music/congrats.ogg" id="2_mubwb"]
 
 [node name="victory" type="CanvasLayer" unique_id=553463786]
 process_mode = 3
@@ -63,3 +64,8 @@ size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1091066145]
+stream = ExtResource("2_mubwb")
+autoplay = true
+bus = &"Music"

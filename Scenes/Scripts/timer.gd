@@ -6,9 +6,8 @@ var time_left: float
 var game_over := false
 @onready var timer_label: Label = $Timer/TimerLabel
 
-
-
 func _ready() -> void:
+	add_to_group("level_timer") 
 	time_left = time_limit
 	update_timer()
 
@@ -32,3 +31,6 @@ func update_timer() -> void:
 func end_game() -> void:
 	game_over = true
 	SceneTransition.load_scene("res://Scenes/too_slow.tscn")
+
+func stop_timer() -> void:
+	game_over = true
