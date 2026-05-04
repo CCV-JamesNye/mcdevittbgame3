@@ -45,11 +45,12 @@ transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="TimerLabel" type="Label" parent="Timer" unique_id=568268386]
 offset_left = 2.0
-offset_top = 6.0
+offset_top = 2.0
 offset_right = 67.0
-offset_bottom = 29.0
+offset_bottom = 25.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Time: 30"
 
 [node name="Enemy2" parent="." unique_id=1317683084 instance=ExtResource("6_accwd")]

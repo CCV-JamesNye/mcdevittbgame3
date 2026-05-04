@@ -61,10 +61,11 @@ transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="TimerLabel" type="Label" parent="Timer" unique_id=427775842]
 offset_left = 2.0
-offset_top = 6.0
 offset_right = 67.0
-offset_bottom = 29.0
+offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.99812, 0.9955918, 0.9980256, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Time: 30"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=870954103]
