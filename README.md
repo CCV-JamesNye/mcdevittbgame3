@@ -1,1 +1,2 @@
-Updated levels further, added more sound/music. Added a jump bar. 
+Added heart system, main menu controls, and try again button
+
