@@ -17,7 +17,7 @@ size = Vector2(224, 8)
 
 [node name="Area02" type="Node2D" unique_id=75784555]
 script = ExtResource("1_xwf8h")
-time_limit = 20.0
+time_limit = 18.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1193882637]
 position = Vector2(291, 162)

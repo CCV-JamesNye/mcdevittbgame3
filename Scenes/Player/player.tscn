@@ -229,7 +229,6 @@ libraries/ = SubResource("AnimationLibrary_7udvr")
 libraries/ = SubResource("AnimationLibrary_fr6x1")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1840281798]
-visible = false
 position = Vector2(176, 81.66667)
 shape = SubResource("RectangleShape2D_nnp3v")
 
@@ -257,8 +256,36 @@ bus = &"SFX"
 volume_db = -15.0
 bus = &"SFX"
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1508828645]
+position = Vector2(176, 84)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1978229756]
+stream = ExtResource("8_jlvik")
+
+[node name="HealthUI" type="CanvasLayer" parent="." unique_id=1900397350]
+
+[node name="HealthLabel" type="Label" parent="HealthUI" unique_id=823596845]
+offset_left = 300.0
+offset_top = -2.0
+offset_right = 320.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0.89968926, 0.081741266, 0.22858217, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 12
+text = "♥ ♥"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HealthUI" unique_id=445456293]
+offset_left = 272.0
+offset_right = 298.0
+offset_bottom = 12.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 8
+text = "Health"
+
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1877840603]
-visible = false
 script = ExtResource("7_0u5uq")
 
 [node name="Flash" type="ColorRect" parent="Overlay" unique_id=55584204]
@@ -266,9 +293,3 @@ offset_right = 323.0
 offset_bottom = 183.0
 mouse_filter = 2
 color = Color(0.8627451, 0.24313726, 0.16470589, 0.47058824)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1508828645]
-position = Vector2(176, 84)
-
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1978229756]
-stream = ExtResource("8_jlvik")

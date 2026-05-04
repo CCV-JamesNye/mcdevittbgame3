@@ -15,6 +15,7 @@ var speed : float = 100
 @onready var overlay: CanvasLayer = $Overlay
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 @onready var jump_meter: ProgressBar = $JumpMeter
+@onready var health_label: Label = $HealthUI/HealthLabel
 
 
 var is_charging_jump : bool = false 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	jump_meter.max_value = 100
 	jump_meter.value = 0
 	jump_meter.visible = false
+	_update_health_label()
 	pass
 
 func _take_damage ( damage: int) -> void:
@@ -40,8 +42,18 @@ func _take_damage ( damage: int) -> void:
 	overlay.screen_flash()
 	effect_player.play("hurt")
 	health_update.emit ( health )
+	_update_health_label()
 	if health <= 0:
 		die()
+
+func _update_health_label() -> void:
+	health_label.text = "Health: " + str(health)
+	if health == 2:
+		health_label.text = "♥ ♥"
+	elif health == 1:
+		health_label.text = "♥ ♡"
+	else:
+		health_label.text = "♡ ♡"
  
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

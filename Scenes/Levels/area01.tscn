@@ -16,7 +16,7 @@ size = Vector2(224, 8)
 
 [node name="Area01" type="Node2D" unique_id=1407721695]
 script = ExtResource("1_cfaov")
-time_limit = 15.0
+time_limit = 10.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=611858602]
 position = Vector2(282, 162)
